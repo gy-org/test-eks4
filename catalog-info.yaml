@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test-eks4
+  annotations:
+    github.com/project-slug: gy-org/test-eks4
+  description: test-eks4 created by ACK(AWS Controller for Kubernetes)
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental

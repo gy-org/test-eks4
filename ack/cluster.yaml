@@ -1,0 +1,35 @@
+apiVersion: eks.services.k8s.aws/v1alpha1
+kind: Cluster
+metadata:
+  name: ${CLUSTER_NAME}
+spec:
+  name: ${CLUSTER_NAME}
+  roleARN: ${CLUSTER_ROLE}
+  accessConfig:
+    authenticationMode: API_AND_CONFIG_MAP
+  version: ${VERSION}
+  resourcesVPCConfig:
+    endpointPrivateAccess: true
+    endpointPublicAccess: true
+    subnetIDs:
+      - ${SUBNET_01}
+      - ${SUBNET_02}
+
+---
+
+apiVersion: eks.services.k8s.aws/v1alpha1
+kind: Nodegroup
+metadata:
+  name: ${NODEGROUP_NAME}
+spec:
+  name: ${NODEGROUP_NAME}
+  clusterName: 	${CLUSTER_NAME}
+  subnets:
+    - ${SUBNET_01}
+    - ${SUBNET_02}
+  nodeRole: ${NODEGROUP_ROLE}
+  scalingConfig:
+    minSize: 1
+    maxSize: 2
+    desiredSize: 1
+
