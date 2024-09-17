@@ -1,7 +1,10 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Resource
 metadata:
   name: test-eks4
+  environmentType: eks
+  eksName: test-eks4
+  eksRegion: us-east-1
   annotations:
     github.com/project-slug: gy-org/test-eks4
   description: test-eks4 created by ACK(AWS Controller for Kubernetes)
